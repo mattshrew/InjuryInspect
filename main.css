@@ -381,7 +381,6 @@ html, body {
     border-radius: 10px;
     color: #fff;
     height: 30px;
-    padding-bottom: 15px !important;
 }
 
 .submit:hover {
@@ -408,4 +407,38 @@ html, body {
     font-weight: 700;
     padding-bottom: 25px;
     padding-top: 25px;
+}
+
+.clearchat {
+    all: unset;
+    position: relative !important;
+    bottom: -323px !important;
+    width: 100%;
+    text-align: center;
+    background-color: #985252;
+    border-radius: 10px;
+    color: #fff;
+    height: 30px;
+}
+
+
+.clearchat:hover {
+    all: unset;
+    text-align: center;
+    background-color: #8a3c3c;
+    border-radius: 10px;
+    color: #fff;
+    height: 30px;
+    width: 100%;
+}
+
+.clearchat:active {
+    all: unset;
+    text-align: center;
+    background-color: #8a3c3c;
+    border-radius: 10px;
+    color: #fff;
+    height: 30px;
+    width: 100%;
+    margin-top: 10px;
 }

@@ -1,6 +1,6 @@
 import os
 
-GPT_API_KEY = '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'
+GPT_API_KEY = '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'
 # CO_API_KEY = os.environ.get('CO_API_KEY')
 
 CO_API_KEY = "tuK8cpZGz8JBAcNhKEeDvgfx4TtNBxn40MKEUs7P"

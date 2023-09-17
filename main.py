@@ -55,6 +55,15 @@ def submit(state):
     return
 
 
+def clearChat(state):
+    state.chatHistory = [{"role": "system", "content": "You are a medical assistant, answering questions about the injuries that can occur in a specific body part."}]
+    state.injury1, state.injury2, state.injury3, state.injury4 = ("", "", ""), ("", "", ""), ("", "", ""), ("", "", "")
+    state.userText1, state.userText2, state.userText3, state.userText4, state.userText5 = "", "", "", "", ""
+    state.botText1, state.botText2, state.botText3, state.botText4, state.botText5 = "", "", "", "", ""
+    state.part, state.purpose = "", ("", "")
+
+
+
 def info(state, id, action):
     part = spot_names[int(id[0])][int(id[2])]
     new_data = diagnose(part)
@@ -169,6 +178,7 @@ page = f"""
 
 <|{{textInput}}|input|class_name=textinput|>
 <|Submit|button|class_name=submit|on_action=submit|>
+<|Clear Chat|button|class_name=clearchat|on_action=clearChat|>
 |>
 |>
     
