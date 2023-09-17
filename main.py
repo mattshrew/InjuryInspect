@@ -1,4 +1,5 @@
 from taipy.gui import Gui, notify
+from backend.py import diagnose
 
 text = "no "
 newline = "\n"
