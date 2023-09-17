@@ -1,9 +1,9 @@
 import os
 
-GPT_API_KEY = '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'
+GPT_API_KEY = 'GPT API KEY'
 # CO_API_KEY = os.environ.get('CO_API_KEY')
 
-CO_API_KEY = "tuK8cpZGz8JBAcNhKEeDvgfx4TtNBxn40MKEUs7P"
+CO_API_KEY = "COHERE API KEY"
 
 
 import cohere
