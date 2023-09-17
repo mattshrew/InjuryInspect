@@ -1,17 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@900&display=swap');
+
 * {
-    border: 0.1px solid white;
+    /* border: 0.1px solid black; */
     box-sizing: border-box !important;
     margin: 0;
-    
+    font-family: 'Lexend', sans-serif;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(255, 78, 122);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 45, 90);
+}
+
+
+.taipy-watermark {
+    display: none;
+}
+
+.taipy-dark, .taipy-light {
+    min-height: 100vh;
 }
 
 #root {
-    height: 100vh;
+    height: auto;
     margin: 0 !important;
 }
 
 html, body {
-    height: 100vh;
+    height: auto;
+}
+
+.css-7g81c7 {
+    background-color: #fff;
+}
+
+.container {
+    background: #fff;
+    width: 100%;
+    height: 25vh;
+    /* border-bottom: 1px solid black; */
 }
 
 .title {
@@ -20,16 +53,71 @@ html, body {
     align-items: center;
 }
 
-.taipy-dark, .taipy-light {
-    min-height: 100vh;
+.slogan-container, .slogan-container > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container {
-    height: 20vh;
+.slogan {
+    font-size: 32px;
+    font-weight: bold;
+    color: black;
 }
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.section > * {
+    display: block;
+    width: 80%;
+    padding: 32px;
+}
+
+.d-block {
+    /* padding-top: 25vh; */
+}
+
+#section-1, #section-3 {
+    background-color: #fbcedfff;
+    padding-right: 60px;
+}
+
+#section-2 {
+    background-color: #fff;
+    text-align: right;
+    padding-left: 60px;
+}
+
+#section-1, #section-2 {
+    height: 37.5vh;
+}
+
+#section-3 {
+    height: 25vh;
+}
+
+.heading {
+    font-size: 32px;
+    font-weight: bolder;
+    color: #b3002e;
+}
+
+.heading, .paragraph {
+    display: inline-block;
+}
+
 
 .injury {
-    height: 80vh;
+    height: 75vh;
+}
+
+.injury * {
+    /* border: 1px solid black; */
 }
 
 .select {
@@ -47,16 +135,30 @@ html, body {
 }
 
 .small_image {
-    padding: 5px 0;
-    margin: 16px 0 0;
+    border-radius: 10px;
+    width: 80%;
+    padding: 0;
+    margin: 35px 0 -9px;
 }
 
 .diagram, .diagram > * {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     position: relative;
-    height: 80vh;
+    height: 75vh;
+}
+
+.diagram > * {
+    margin-top: 35px;
+}
+
+.big_image {
+    border: 1px solid rgba(255, 96, 73, 0.5);
+    border-radius: 20px;
+    width: 530px;
+    height: 420px;
+    object-fit: contain;
 }
 
 .taipy-button {
@@ -77,5 +179,128 @@ html, body {
 
 
 .info {
-    /* width: 25%; */
+    margin: 35px 12px 0;
+    border: 1px solid hsla(8, 100%, 64%, 0.5);
+    border-radius: 20px;
+    height: 420px;
+}
+
+
+
+
+.s0 {
+    top: 316px;
+    left: 260px;
+}
+
+
+.s1 {
+    top: 240px;
+    left: 340px;
+}
+
+
+.s2 {
+    top: 240px;
+    left: 410px;
+}
+
+
+.s3 {
+    top: 170px;
+    left: 330px;
+}
+
+
+.s4 {
+    top: 310px;
+    left: 160px;
+}
+
+
+.s5 {
+    top: 264px;
+    left: 370px;
+}
+
+
+.s6 {
+    top: 300px;
+    left: 390px;
+}
+
+
+.s7 {
+    top: 170px;
+    left: 385px;
+}
+
+.s8, .s9, .s10 {
+    display: none;
+}
+
+
+.t0 {
+    top: 40px;
+    left: 365px;
+}
+
+
+.t1 {
+    top: 63px;
+    left: 370px;
+}
+
+
+.t2 {
+    top: 140px;
+    left: 390px;
+}
+
+
+.t3 {
+    top: 100px;
+    left: 320px;
+}
+
+
+.t4 {
+    top: 170px;
+    left: 355px;
+}
+
+
+.t5 {
+    top: 60px;
+    left: 330px;
+}
+
+
+.t6 {
+    top: 320px;
+    left: 170px;
+}
+
+
+.t7 {
+    top: 100px;
+    left: 170px;
+}
+
+
+.t8 {
+    top: 110px;
+    left: 130px;
+}
+
+
+.t9 {
+    top: 160px;
+    left: 170px;
+}
+
+
+.t10 {
+    top: 240px;
+    left: 170px;
 }
