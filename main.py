@@ -1,5 +1,5 @@
 from taipy.gui import Gui, notify
-from backend.py import diagnose
+from backend import diagnose
 
 text = "no "
 newline = "\n"
@@ -7,28 +7,30 @@ pages = [("/", "Home")]
 images = ("side.png", "topbottom.png")
 image = 0
 spot_names = [["Plantar fascia", "Ligaments", "Achilles tendon", "Muscles",  "Sesamoid bone", "Fibula", "Talus", "Tibia"], ["Nail body", "Growth plate", "Proximal inter-phalangeal joint", "Metatarsales", "Tendons", "Phalanges", "Calcaneus", "Interdigit spaces", "Digitoplantar fold", "Anterior longitudinal sulcus", "Plantar region"]]
-
-
-# {''.join([f'<| |button|class_name={part}|on_action=info|>' for part in parts])}
+part, purpose = "", ("", "")
+injuries = False
+injury1, injury2, injury3, injury4 = ("", "", ""), ("", "", ""), ("", "", ""), ("", "", "")
 
 def changeImage(state, id, action):
     state.image = int(id[-1])
-    # state.spots = newline.join([f'<| |button|class_name={images[int(id[-1])][0]}{i}|on_action=info|>' for i in range(len(spot_names[int(id[-1])]))])
-    # print(newline.join([f'<| |button|class_name={images[int(id[-1])][0]}{i}|on_action=info|>' for i in range(len(spot_names[int(id[-1])]))]))
     return
-
-def changeSpots(state, value):
-    return
-
-def on_change(state, var_name, var_value):
-    if var_name == "image":
-        print(var_value)
-        # state.spots = newline.join([f'<| |button|class_name={images[var_value][0]}{i}|on_action=info|>' for i in range(len(spot_names[var_value]))])
-        # changeSpots(state, var_value)
-        return
 
 def info(state, id, action):
-    state.text = id
+    part = spot_names[int(id[0])][int(id[2])]
+    new_data = diagnose(part)
+    state.part = part
+    state.purpose = ("Purpose: ", new_data['partPurpose'])
+    if len(new_data['injuries']): state.injuries = True
+    else: state.injuries = False
+    if len(new_data['injuries']): state.injury1 = (new_data['injuries'][0], ": ", new_data[new_data['injuries'][0]])
+    else: state.injury1 = ("", "", "")
+    if len(new_data['injuries']) > 1: state.injury2 = (new_data['injuries'][1], ": ", new_data[new_data['injuries'][1]])
+    else: state.injury2 = ("", "", "")
+    if len(new_data['injuries']) > 2: state.injury3 = (new_data['injuries'][2], ": ", new_data[new_data['injuries'][2]])
+    else: state.injury3 = ("", "", "")
+    if len(new_data['injuries']) > 3: state.injury4 = (new_data['injuries'][3], ": ", new_data[new_data['injuries'][3]])
+    else: state.injury4 = ("", "", "")
+    print(new_data)
     return 
 
 
@@ -66,20 +68,41 @@ page = f"""
 |>
 <|part|class_name=diagram|
 <|{{images[image]}}|image|width=100%|class_name=big_image|>
-<|{{images[image]}}|button|class_name={{images[image][0]}}0|class_name={{images[image][0]}}0|on_action=info|>
-<|{{images[image]}}|button|class_name={{images[image][0]}}1|class_name={{images[image][0]}}1|on_action=info|>
-<|{{images[image]}}|button|class_name={{images[image][0]}}2|class_name={{images[image][0]}}2|on_action=info|>
-<|{{images[image]}}|button|class_name={{images[image][0]}}3|class_name={{images[image][0]}}3|on_action=info|>
-<|{{images[image]}}|button|class_name={{images[image][0]}}4|class_name={{images[image][0]}}4|on_action=info|>
-<|{{images[image]}}|button|class_name={{images[image][0]}}5|class_name={{images[image][0]}}5|on_action=info|>
-<|{{images[image]}}|button|class_name={{images[image][0]}}6|class_name={{images[image][0]}}6|on_action=info|>
-<|{{images[image]}}|button|class_name={{images[image][0]}}7|class_name={{images[image][0]}}7|on_action=info|>
-<|{{images[image]}}|button|class_name={{images[image][0]}}8|class_name={{images[image][0]}}8|on_action=info|>
-<|{{images[image]}}|button|class_name={{images[image][0]}}9|class_name={{images[image][0]}}9|on_action=info|>
-<|{{images[image]}}|button|class_name={{images[image][0]}}10|class_name={{images[image][0]}}10|on_action=info|>
+<|{{images[image]}}|button|id={{image}}-0|class_name={{images[image][0]}}0|on_action=info|>
+<|{{images[image]}}|button|id={{image}}-1|class_name={{images[image][0]}}1|on_action=info|>
+<|{{images[image]}}|button|id={{image}}-2|class_name={{images[image][0]}}2|on_action=info|>
+<|{{images[image]}}|button|id={{image}}-3|class_name={{images[image][0]}}3|on_action=info|>
+<|{{images[image]}}|button|id={{image}}-4|class_name={{images[image][0]}}4|on_action=info|>
+<|{{images[image]}}|button|id={{image}}-5|class_name={{images[image][0]}}5|on_action=info|>
+<|{{images[image]}}|button|id={{image}}-6|class_name={{images[image][0]}}6|on_action=info|>
+<|{{images[image]}}|button|id={{image}}-7|class_name={{images[image][0]}}7|on_action=info|>
+<|{{images[image]}}|button|id={{image}}-8|class_name={{images[image][0]}}8|on_action=info|>
+<|{{images[image]}}|button|id={{image}}-9|class_name={{images[image][0]}}9|on_action=info|>
+<|{{images[image]}}|button|id={{image}}-10|class_name={{images[image][0]}}10|on_action=info|>
 |>
 <|part|class_name=info|
-# idk
+<|{{part}}|>    
+
+<|{{purpose[0]}}|>
+<|{{purpose[1]}}|>
+
+<|{"Injuries" if {injuries}==True else " "}|>
+
+<|{{injury1[0]}}{{injury1[1]}}|>
+
+<|{{injury1[2]}}|>
+
+<|{{injury2[0]}}{{injury2[1]}}|>
+
+<|{{injury2[2]}}|>
+
+<|{{injury3[0]}}{{injury3[1]}}|>
+
+<|{{injury3[2]}}|>
+
+<|{{injury4[0]}}{{injury4[1]}}|>
+
+<|{{injury4[2]}}|>
 |>
 |>
     

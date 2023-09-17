@@ -1,10 +1,18 @@
+import os
+
+GPT_API_KEY = os.environ.get('GPT_API_KEY')
+# CO_API_KEY = os.environ.get('CO_API_KEY')
+
+CO_API_KEY = "tuK8cpZGz8JBAcNhKEeDvgfx4TtNBxn40MKEUs7P"
+
+
 import cohere
-co = cohere.Client('tuK8cpZGz8JBAcNhKEeDvgfx4TtNBxn40MKEUs7P')
+co = cohere.Client(CO_API_KEY)
 
 import numpy as np
 
 import openai
-openai.api_key = "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"
+openai.api_key = GPT_API_KEY
 
 import requests
 

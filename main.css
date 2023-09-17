@@ -8,7 +8,7 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #f8eded80;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -139,9 +139,10 @@ html, body {
     width: 80%;
     padding: 0;
     margin: 35px 0 -9px;
+    background-color: #f1f1f1;
 }
 
-.diagram, .diagram > * {
+.diagram > * {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -149,11 +150,8 @@ html, body {
     height: 75vh;
 }
 
-.diagram > * {
-    margin-top: 35px;
-}
-
 .big_image {
+    margin-top: 35px;
     border: 1px solid rgba(255, 96, 73, 0.5);
     border-radius: 20px;
     width: 530px;
@@ -170,10 +168,11 @@ html, body {
     padding: 0;
     min-width: 30px;
     min-height: 30px;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 0.5s ease;
 }
-.taipy-button:hover {
+.taipy-button:hover, .taipy-button:focus {
     background-color: rgba(202, 55, 36, 0.8);
+    transform: scale(1.2);
     border-color: transparent;
 }
 
@@ -183,56 +182,104 @@ html, body {
     border: 1px solid hsla(8, 100%, 64%, 0.5);
     border-radius: 20px;
     height: 420px;
+    overflow-y: scroll;
+    color: black;
+    padding: 10px;
 }
 
+.info > :nth-child(1) {
+    text-align: center;
+}
+.info > :nth-child(1) span {
+    margin: 0 auto;
+    font-size: 24px;
+    font-weight: 600;
+}
 
+.info > :nth-child(2) {
+    margin-bottom: 6px;
+}
+.info > :nth-child(2) span:nth-child(1) {
+    font-weight: 600;
+}
+
+.info > :nth-child(3) {
+    text-align: center;
+}
+.info > :nth-child(3) span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.info > :nth-child(4) {
+    font-weight: 600;
+}
+.info > :nth-child(6) {
+    font-weight: 600;
+}
+.info > :nth-child(8) {
+    font-weight: 600;
+}
+.info > :nth-child(10) {
+    font-weight: 600;
+}
+
+.info > :nth-child(5) {
+    margin-bottom: 3px;
+}
+.info > :nth-child(7) {
+    margin-bottom: 3px;
+}
+.info > :nth-child(9) {
+    margin-bottom: 3px;
+}
 
 
 .s0 {
-    top: 316px;
-    left: 260px;
-}
-
-
-.s1 {
-    top: 240px;
-    left: 340px;
-}
-
-
-.s2 {
-    top: 240px;
-    left: 410px;
-}
-
-
-.s3 {
-    top: 170px;
+    top: 356px;
     left: 330px;
 }
 
 
+.s1 {
+    top: 280px;
+    left: 410px;
+}
+
+
+.s2 {
+    top: 280px;
+    left: 480px;
+}
+
+
+.s3 {
+    top: 210px;
+    left: 400px;
+}
+
+
 .s4 {
-    top: 310px;
-    left: 160px;
+    top: 350px;
+    left: 230px;
 }
 
 
 .s5 {
-    top: 264px;
-    left: 370px;
+    top: 304px;
+    left: 440px;
 }
 
 
 .s6 {
-    top: 300px;
-    left: 390px;
+    top: 340px;
+    left: 460px;
 }
 
 
 .s7 {
-    top: 170px;
-    left: 385px;
+    top: 210px;
+    left: 455px;
 }
 
 .s8, .s9, .s10 {
@@ -241,66 +288,66 @@ html, body {
 
 
 .t0 {
-    top: 40px;
-    left: 365px;
+    top: 80px;
+    left: 435px;
 }
 
 
 .t1 {
-    top: 63px;
-    left: 370px;
+    top: 103px;
+    left: 440px;
 }
 
 
 .t2 {
+    top: 180px;
+    left: 460px;
+}
+
+
+.t3 {
     top: 140px;
     left: 390px;
 }
 
 
-.t3 {
-    top: 100px;
-    left: 320px;
-}
-
-
 .t4 {
-    top: 170px;
-    left: 355px;
+    top: 210px;
+    left: 425px;
 }
 
 
 .t5 {
-    top: 60px;
-    left: 330px;
+    top:100px;
+    left: 400px;
 }
 
 
 .t6 {
-    top: 320px;
-    left: 170px;
+    top: 360px;
+    left: 240px;
 }
 
 
 .t7 {
-    top: 100px;
-    left: 170px;
+    top: 140px;
+    left: 240px;
 }
 
 
 .t8 {
-    top: 110px;
-    left: 130px;
+    top: 160px;
+    left: 200px;
 }
 
 
 .t9 {
-    top: 160px;
-    left: 170px;
+    top: 200px;
+    left: 240px;
 }
 
 
 .t10 {
-    top: 240px;
-    left: 170px;
+    top: 280px;
+    left: 240px;
 }
