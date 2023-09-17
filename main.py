@@ -1,5 +1,5 @@
 from taipy.gui import Gui, notify
-from backend import diagnose
+from backend import diagnose, newChat
 
 text = "no "
 newline = "\n"
@@ -10,10 +10,50 @@ spot_names = [["Plantar fascia", "Ligaments", "Achilles tendon", "Muscles",  "Se
 part, purpose = "", ("", "")
 injuries = False
 injury1, injury2, injury3, injury4 = ("", "", ""), ("", "", ""), ("", "", ""), ("", "", "")
+textInput = ""
+userText1, userText2, userText3, userText4, userText5 = "", "", "", "", ""
+botText1, botText2, botText3, botText4, botText5 = "", "", "", "", ""
 
 def changeImage(state, id, action):
     state.image = int(id[-1])
     return
+
+chatHistory = [{"role": "system", "content": "You are a medical assistant, answering questions about the injuries that can occur in a specific body part."}]
+
+chatCounter = 1
+def submit(state):
+    if state.chatCounter == 1:
+        state.userText1 = state.textInput
+        chatHistory.append({"role": "user", "content": state.textInput})
+        state.textInput = ""
+        state.botText1 = newChat(chatHistory) + "\n1/5\n"
+        state.chatCounter += 1
+    elif state.chatCounter == 2:
+        state.userText2 = state.textInput
+        chatHistory.append({"role": "user", "content": state.textInput})
+        state.textInput = ""
+        state.botText2 = newChat(chatHistory) + "\n2/5\n"
+        state.chatCounter += 1
+    elif state.chatCounter == 3:
+        state.userText3 = state.textInput
+        chatHistory.append({"role": "user", "content": state.textInput})
+        state.textInput = ""
+        state.botText3 = newChat(chatHistory) + "\n3/5\n"
+        state.chatCounter += 1
+    elif state.chatCounter == 4:
+        state.userText4 = state.textInput
+        chatHistory.append({"role": "user", "content": state.textInput})
+        state.textInput = ""
+        state.botText4 = newChat(chatHistory) + "\n4/5\n"
+        state.chatCounter += 1
+    else:
+        state.userText5 = state.textInput
+        chatHistory.append({"role": "user", "content": state.textInput})
+        state.textInput = ""
+        state.botText5 = newChat(chatHistory) + "\n5/5\n"
+        state.chatCounter += 1
+    return
+
 
 def info(state, id, action):
     part = spot_names[int(id[0])][int(id[2])]
@@ -31,6 +71,9 @@ def info(state, id, action):
     if len(new_data['injuries']) > 3: state.injury4 = (new_data['injuries'][3], ": ", new_data[new_data['injuries'][3]])
     else: state.injury4 = ("", "", "")
     print(new_data)
+    for key in new_data:
+        if key != "partPurpose" and key != "injuries":
+            chatHistory.append({"role": "assistant", "content": new_data[key]})
     return 
 
 
@@ -103,9 +146,32 @@ page = f"""
 <|{{injury4[0]}}{{injury4[1]}}|>
 
 <|{{injury4[2]}}|>
+
+<|{{userText1}}|text|class_name=userText|>
+
+<|{{botText1}}|text|class_name=botText|>
+
+<|{{userText2}}|text|class_name=userText|>
+
+<|{{botText2}}|text|class_name=botText|>
+
+<|{{userText3}}|text|class_name=userText|>
+
+<|{{botText3}}|text|class_name=botText|>
+
+<|{{userText4}}|text|class_name=userText|>
+
+<|{{botText4}}|text|class_name=botText|>
+
+<|{{userText5}}|text|class_name=userText|>
+
+<|{{botText5}}|text|class_name=botText|>
+
+<|{{textInput}}|input|class_name=textinput|>
+<|Submit|button|class_name=submit|on_action=submit|>
 |>
 |>
     
 """
 
-Gui(page=page, css_file="main.css").run(use_reloader=True)
+Gui(page=page, css_file="main.css").run(port=4000, use_reloader=True)

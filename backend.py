@@ -1,6 +1,6 @@
 import os
 
-GPT_API_KEY = os.environ.get('GPT_API_KEY')
+GPT_API_KEY = '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'
 # CO_API_KEY = os.environ.get('CO_API_KEY')
 
 CO_API_KEY = "tuK8cpZGz8JBAcNhKEeDvgfx4TtNBxn40MKEUs7P"
@@ -52,7 +52,7 @@ def mayoSearchSummary(searchTerm, bodyPart):
         if "Mayo Clinic does not endorse companies or products. Advertising revenue supports our not-for-profit mission." in paragraphs:
             del paragraphs[paragraphs.index("Mayo Clinic does not endorse companies or products. Advertising revenue supports our not-for-profit mission."):-1]
 
-        paragraphs.pop(-1)
+        # paragraphs.pop(-1)
 
         # Turn list into one long string to be fed into GPT
         paragraphs = " ".join(paragraphs)
@@ -178,15 +178,16 @@ def diagnose(part):
 
 
 
-# def newChat(chatHistory: list):
-#     history = [{"role": "system", "content": "You are a medical assistant, answering questions about the injuries that can occur in a specific body part."}]
-#     history.append(chatHistory)
+def newChat(chatHistory: list):
+    history = {"role": "system", "content": "You are a medical assistant, answering questions about the injuries that can occur in a specific body part."}
+ 
+    chatHistory.insert(0, history)
 
-#     newMessage = openai.ChatCompletion.create(
-#     model="gpt-3.5-turbo",
-#     messages=history,
-#     max_tokens=2000,
-#     temperature=0.7,
-#     )
-    
-#     return newMessage["choices"][0]["message"]["content"]
+    newMessage = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=chatHistory,
+    max_tokens=2000,
+    temperature=0.7,
+    )
+
+    return newMessage["choices"][0]["message"]["content"]

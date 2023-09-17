@@ -185,6 +185,7 @@ html, body {
     overflow-y: scroll;
     color: black;
     padding: 10px;
+    position: relative
 }
 
 .info > :nth-child(1) {
@@ -350,4 +351,61 @@ html, body {
 .t10 {
     top: 280px;
     left: 240px;
+}
+
+.textinput {
+    all: unset;
+    position: relative !important;
+    bottom: -303px !important;
+    width: 100%;
+    right: 0px;
+    caret-color: #000;
+}
+
+.textinput > * {
+    color: #000;
+    caret-color: #000;
+}
+
+.textinput > * {
+    border: 1px solid #fd7661;
+}
+
+.submit {
+    all: unset;
+    position: relative !important;
+    bottom: -313px !important;
+    width: 100%;
+    text-align: center;
+    background-color: #985252;
+    border-radius: 10px;
+    color: #fff;
+    height: 30px;
+    padding-bottom: 15px !important;
+}
+
+.submit:hover {
+    all: unset;
+    text-align: center;
+    background-color: #8a3c3c;
+    border-radius: 10px;
+    color: #fff;
+    height: 30px;
+    width: 100%;
+}
+
+.submit:active {
+    all: unset;
+    text-align: center;
+    background-color: #8a3c3c;
+    border-radius: 10px;
+    color: #fff;
+    height: 30px;
+    width: 100%;
+}
+
+.userText {
+    font-weight: 700;
+    padding-bottom: 25px;
+    padding-top: 25px;
 }
